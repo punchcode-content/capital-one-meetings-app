@@ -1,8 +1,8 @@
 spring:
   datasource:
     platform: postgresql
-    url: jdbc:postgresql://localhost/library
-    username: library
+    url: jdbc:postgresql://localhost/meetings
+    username: meetings
   jpa:
     show-sql: true
     hibernate:
@@ -17,3 +17,7 @@ logging:
           sql: trace
 flyway:
   enabled: true
+security:
+  user:
+    name: user
+    password: password
