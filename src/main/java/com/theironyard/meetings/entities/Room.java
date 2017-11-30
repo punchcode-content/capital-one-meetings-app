@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Table(name = "rooms")
@@ -27,6 +28,9 @@ public class Room {
     private Boolean isReconfigurable;
     @Column(columnDefinition = "TEXT")
     private String notes;
+
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservations;
 
     public Room() {
         this.hasProjector = false;

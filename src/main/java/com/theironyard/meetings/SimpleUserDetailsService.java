@@ -17,6 +17,9 @@ public class SimpleUserDetailsService implements UserDetailsService {
         userMap = new HashMap<>();
         userMap.put("user", new User("password", "ROLE_USER"));
         userMap.put("admin", new User("password", "ROLE_USER,ROLE_ADMIN"));
+        userMap.put("aspen", new User("password", "ROLE_USER"));
+        userMap.put("parker", new User("password", "ROLE_USER"));
+        userMap.put("shannon", new User("password", "ROLE_USER"));
     }
 
     @Override

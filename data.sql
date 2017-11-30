@@ -1,3 +1,4 @@
+DELETE FROM reservations;
 DELETE FROM rooms;
 DELETE FROM buildings;
 

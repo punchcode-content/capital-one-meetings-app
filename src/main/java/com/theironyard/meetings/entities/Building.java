@@ -1,7 +1,16 @@
 package com.theironyard.meetings.entities;
 
+import org.springframework.data.rest.core.config.Projection;
+
 import javax.persistence.*;
 import java.util.List;
+
+@Projection(name = "withRooms", types = {Building.class})
+interface WithRooms {
+    String getName();
+
+    List<Room> getRooms();
+}
 
 @Entity
 @Table(name = "buildings")
@@ -44,5 +53,4 @@ public class Building {
     public boolean equals(Object o) {
         return this == o || (o instanceof Building && id != null && id.equals(((Building) o).id));
     }
-
 }
