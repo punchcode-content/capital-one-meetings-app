@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    platform: postgresql
+    url: jdbc:postgresql://localhost/library
+    username: library
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    org:
+      hiberate:
+        SQL: debug
+      type:
+        descriptor:
+          sql: trace
+flyway:
+  enabled: true
