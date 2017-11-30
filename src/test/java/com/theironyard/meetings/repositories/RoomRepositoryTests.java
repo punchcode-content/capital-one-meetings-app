@@ -1,5 +1,6 @@
 package com.theironyard.meetings.repositories;
 
+import com.theironyard.meetings.entities.Building;
 import com.theironyard.meetings.entities.Room;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,11 +17,16 @@ import static org.junit.Assert.*;
 @DataJpaTest
 public class RoomRepositoryTests {
     @Autowired private RoomRepository roomRepository;
+    @Autowired private BuildingRepository buildingRepository;
     private Room room;
+    private Building building;
 
     @Before
     public void saveRoom() {
-        Room room = new Room("Building 1", "1001", 1);
+        Building building = new Building();
+        building.setName("Building 1");
+        this.building = buildingRepository.save(building);
+        Room room = new Room(this.building, "1001", 1);
         this.room = roomRepository.save(room);
     }
 
@@ -41,7 +47,7 @@ public class RoomRepositoryTests {
         Room retrievedRoom = roomRepository.findOne(room.getId());
         assertNotNull(retrievedRoom.getId());
         assertEquals(retrievedRoom.getId(), room.getId());
-        assertEquals(retrievedRoom.getBuilding(), "Building 1");
+        assertEquals(retrievedRoom.getBuilding(), building);
         assertEquals(retrievedRoom.getName(), "1001");
     }
 

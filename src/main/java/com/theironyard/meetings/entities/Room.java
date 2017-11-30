@@ -11,9 +11,11 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty
-    @Column(nullable = false)
-    private String building;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "building_id")
+    private Building building;
+
     @NotEmpty
     @Column(nullable = false)
     private String name;
@@ -32,7 +34,7 @@ public class Room {
         this.isReconfigurable = false;
     }
 
-    public Room(String building, String name, Integer maxPeople) {
+    public Room(Building building, String name, Integer maxPeople) {
         this.building = building;
         this.name = name;
         this.maxPeople = maxPeople;
@@ -49,11 +51,11 @@ public class Room {
         this.id = id;
     }
 
-    public String getBuilding() {
+    public Building getBuilding() {
         return building;
     }
 
-    public void setBuilding(String building) {
+    public void setBuilding(Building building) {
         this.building = building;
     }
 
@@ -103,5 +105,10 @@ public class Room {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this == o || (o instanceof Room && id != null && id.equals(((Room) o).id));
     }
 }

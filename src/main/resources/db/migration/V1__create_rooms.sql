@@ -7,5 +7,5 @@ CREATE TABLE rooms (
   has_teleconferencing BOOLEAN      NOT NULL DEFAULT 'f',
   is_reconfigurable    BOOLEAN      NOT NULL DEFAULT 'f',
   notes                TEXT,
-  UNIQUE (building, name)
+  CONSTRAINT unique_rooms_building_name UNIQUE (building, name)
 );
