@@ -69,6 +69,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Room room1010 = new Room(bldg1, "1010", 20);
 
         Room room2005 = new Room(bldg2, "2005", 8);
+        room2005.setHasTeleconferencing(true);
         Room room2007 = new Room(bldg2, "2007", 4);
         Room roomAuditorium = new Room(bldg2, "Chavez Auditorium", 80);
 
