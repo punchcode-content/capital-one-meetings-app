@@ -21,4 +21,12 @@ public class MyPropertiesConfig {
         log.info("meetings.allowConflict: " + allowConflict);
         log.info("meetings.maxConflicts: " + maxConflicts);
     }
+
+    public Boolean getAllowConflict() {
+        return allowConflict;
+    }
+
+    public Integer getMaxConflicts() {
+        return maxConflicts;
+    }
 }

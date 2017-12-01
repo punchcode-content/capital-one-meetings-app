@@ -23,3 +23,5 @@ security:
     password: password
 sampledata:
   load: true
+meetings:
+  allowConflict: false

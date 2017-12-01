@@ -1,5 +1,6 @@
 package com.theironyard.meetings;
 
+import com.theironyard.meetings.config.MyPropertiesConfig;
 import com.theironyard.meetings.entities.Reservation;
 import com.theironyard.meetings.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,13 @@ import java.util.List;
 @RepositoryEventHandler(Reservation.class)
 public class ReservationEventHandler {
     private ReservationRepository reservationRepository;
+    private MyPropertiesConfig config;
+
+
+    @Autowired
+    public void setConfig(MyPropertiesConfig config) {
+        this.config = config;
+    }
 
     @Autowired
     public void setReservationRepository(ReservationRepository reservationRepository) {
@@ -31,9 +39,11 @@ public class ReservationEventHandler {
     @HandleBeforeCreate
     @HandleBeforeSave
     public void checkForReservationConflict(Reservation reservation) throws ReservationOverlapException {
-        List<Reservation> overlaps = reservationRepository.findOverlappingReservations(reservation);
-        if (!(overlaps == null || overlaps.isEmpty())) {
-            throw new ReservationOverlapException();
+        if (!config.getAllowConflict()) {
+            List<Reservation> overlaps = reservationRepository.findOverlappingReservations(reservation);
+            if (!(overlaps == null || overlaps.isEmpty())) {
+                throw new ReservationOverlapException();
+            }
         }
     }
 
