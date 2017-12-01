@@ -25,6 +25,13 @@ public class Building {
 
     private List<Room> rooms;
 
+    public Building() {
+    }
+
+    public Building(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }
