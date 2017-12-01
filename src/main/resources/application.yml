@@ -21,4 +21,5 @@ security:
   user:
     name: user
     password: password
-
+sampledata:
+  load: true
