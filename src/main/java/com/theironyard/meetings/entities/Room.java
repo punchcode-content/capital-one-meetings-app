@@ -33,18 +33,18 @@ public class Room {
     private List<Reservation> reservations;
 
     public Room() {
-        this.hasProjector = false;
-        this.hasTeleconferencing = false;
-        this.isReconfigurable = false;
+        this.setHasProjector(false);
+        this.setHasTeleconferencing(false);
+        this.setReconfigurable(false);
     }
 
     public Room(Building building, String name, Integer maxPeople) {
-        this.building = building;
-        this.name = name;
-        this.maxPeople = maxPeople;
-        this.hasProjector = false;
-        this.hasTeleconferencing = false;
-        this.isReconfigurable = false;
+        this.setBuilding(building);
+        this.setName(name);
+        this.setMaxPeople(maxPeople);
+        this.setHasProjector(false);
+        this.setHasTeleconferencing(false);
+        this.setReconfigurable(false);
     }
 
     public Integer getId() {
